@@ -11,7 +11,7 @@ class Admin::JobsController < ApplicationController
   end
 
   def new
-    @job = Job.new(job_params)
+    @job = Job.new
   end
 
   def create
@@ -42,14 +42,14 @@ class Admin::JobsController < ApplicationController
 
     @job.destroy
 
-    redirect_to
+    redirect_to admin_jobs_path
   end
 
   private
   def job_params
-    params.require(:job).permit(:title, :description)
+    params.require(:job).permit(:title, :description, :wage_upper_bound, :wage_lower_bound, :contact_email)
   end
 
-  
+
 
 end
